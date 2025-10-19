@@ -20,6 +20,9 @@ class GraphGenerator:
         data_types = config.get('data_types', {})
         output_file_name = config['output_file_name']
         delimiter = config.get('delimiter', ',')
+        title = config.get('title')
+        xlabel = config.get('xlabel')
+        ylabel = config.get('ylabel')
 
         df = self.loader.load_csv(file_name, delimiter=delimiter)
 
@@ -32,5 +35,5 @@ class GraphGenerator:
         plotter = PlotterFactory.get_plotter(plot_type)
         output_file_path = self.output_path / output_file_name
 
-        plotter.plot(df, x_col, y_col, output_file_path)
+        plotter.plot(df, x_col, y_col, output_file_path, title, xlabel, ylabel)
 
